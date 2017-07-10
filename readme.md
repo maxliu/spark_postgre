@@ -5,7 +5,8 @@ The popurse of this blog ( including source code) is to show a reliable way to c
 ## Preparation to use Postgre in Spark.
 
 ### 1) Copy driver jar file to the folder of "lib". Otherwise the workers won't able to use this driver. 
-In this case, the file is `postgresql-42.1.1.jar`
+	In this case, the file is `postgresql-42.1.1.jar`
+	wget https://jdbc.postgresql.org/download/postgresql-42.1.1.jar
 
 ### 2) Add the following to scala code.
 	
@@ -62,7 +63,7 @@ create table employee (
 
     employees_table.createGlobalTempView("employee")
 
-#### 3) Run query.
+#### 3) Run query useing window function.
 
     spark.sql("""
         select department, name, salary
