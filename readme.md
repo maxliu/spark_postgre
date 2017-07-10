@@ -18,16 +18,16 @@ The popurse of this blog (Including source code) is to demonstrate a reliable wa
 The following is a "popular" SQL question:) 
 Given a table of employee with their salaries and departments, find the highest three slaralies in each department.
 
-The employee table in PostgreSQL database:
+The employee table in PostgreSQL database.
 
 ### The schema
 
-create table employee (
-    id int,
-    name char(50),
-    salary int,
-    department char(50)
-    );
+	create table employee (
+	    id int,
+	    name char(50),
+	    salary int,
+	    department char(50)
+	    );
 
 #### The data
 
