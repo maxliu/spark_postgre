@@ -2,10 +2,10 @@
 
 # Preparation to use postgre in spark.
 
-### 1) copy driver jar file to the folder of "lib". Otherwise the workers won't able to use this driver. 
+### 1) Copy driver jar file to the folder of "lib". Otherwise the workers won't able to use this driver. 
 In this case, the file is `postgresql-42.1.1.jar`
 
-### 2) add the following to scala code.
+### 2) Add the following to scala code.
 	
   val driver = "org.postgresql.Driver"
   Class.forName(driver)
@@ -52,15 +52,15 @@ create table employee (
 
 # Query by Spark.
 
-### 1) read table to a dataframe.
+### 1) Read table to a dataframe.
 
     val employees_table = spark.read.jdbc(jdbc_url, "employee", connectionProperties).cache()
 
-### 2) regist it.
+### 2) Register it.
 
     employees_table.createGlobalTempView("employee")
 
-### 3) run query.
+### 3) Run query.
 
     spark.sql("""
         select department, name, salary
@@ -74,7 +74,7 @@ create table employee (
 
 # Query by Postgre.
 
-### 1) define the query.
+### 1) Define the query.
 
     var query_str = """
         (select e.department, name, e.salary
@@ -90,11 +90,11 @@ create table employee (
         order by e.department, e.salary desc) as e_q
         """
 
-### 2) send qury to postgre server and return a spark dataframe.
+### 2) Send qury to postgre server and return a spark dataframe.
 
     spark.read.jdbc(jdbc_url,query_str , connectionProperties)
 
-# `please note that this query is not going work in spark sql in Spark 2.1.1 becaue it doesn't allow subqueries to acces out layer varibles.`
+# `please note that the query above (query_str) is not going work in spark sql in Spark 2.1.1 becaue it doesn't allow subqueries to acces out layer varibles.`
 
 
 	
