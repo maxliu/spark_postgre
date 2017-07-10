@@ -65,6 +65,11 @@ object spark_postgresql{
   // query by postgresql
   def queryByPostgre():DataFrame = {
 
+    // This query is not going to work in Spark.
+    // Spark < 2.0 doesn't support subquery in WHERE clause
+    // Spark >=2.0 supports subquery in WHERER clause but doesn't allow subquery to 
+    // access outer layer varibles.
+
     var query_str = """
         (select e.department, name, e.salary
         from employee e
