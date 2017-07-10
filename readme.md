@@ -26,7 +26,7 @@ create table employee (
     department char(50)
     );
 
-## The data
+### The data
 
 	+---+--------------------+------+--------------------+
 	| id|                name|salary|          department|
@@ -39,7 +39,7 @@ create table employee (
 	|  6|Randy            ...| 85000|IT               ...|
 	+---+--------------------+------+--------------------+
 
-## Desired result.
+### Desired result.
 	+--------------------+--------------------+------+
 	|          department|                name|salary|
 	+--------------------+--------------------+------+
@@ -52,15 +52,15 @@ create table employee (
 
 # Query by Spark.
 
-## 1) read table to a dataframe.
+### 1) read table to a dataframe.
 
     val employees_table = spark.read.jdbc(jdbc_url, "employee", connectionProperties).cache()
 
-## 2) regist it.
+### 2) regist it.
 
     employees_table.createGlobalTempView("employee")
 
-## 3) run query.
+### 3) run query.
 
     spark.sql("""
         select department, name, salary
@@ -74,7 +74,7 @@ create table employee (
 
 # Query by Postgre.
 
-## 1) define the query.
+### 1) define the query.
 
     var query_str = """
         (select e.department, name, e.salary
@@ -90,11 +90,11 @@ create table employee (
         order by e.department, e.salary desc) as e_q
         """
 
-## 2) send qury to postgre server and return a spark dataframe.
+### 2) send qury to postgre server and return a spark dataframe.
 
     spark.read.jdbc(jdbc_url,query_str , connectionProperties)
 
-please note that this query is not going work in spark sql in Spark 2.1.1 becaue it doesn't allow subqueries to acces out layer varibles.
+`please note that this query is not going work in spark sql in Spark 2.1.1 becaue it doesn't allow subqueries to acces out layer varibles.`
 
 
 	
