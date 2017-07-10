@@ -10,9 +10,9 @@ The popurse of this blog (Including source code) is to demonstrate a reliable wa
 
 ### 2) Add the following to scala code.
 	
-  val driver = "org.postgresql.Driver"
-  Class.forName(driver)
-  connectionProperties.put("driver", driver)
+  	val driver = "org.postgresql.Driver"
+  	Class.forName(driver)
+  	connectionProperties.put("driver", driver)
 
 ## Data for testing. 
 The following is a "popular" SQL question:) 
