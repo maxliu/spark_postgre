@@ -2,7 +2,7 @@
 
 The popurse of this blog ( including source code) is to show a reliable way to connect to PostgreSQL server from Spark 2.1.1.
 
-## Preparation to use postgre in spark.
+## Preparation to use Postgre in Spark.
 
 ### 1) Copy driver jar file to the folder of "lib". Otherwise the workers won't able to use this driver. 
 In this case, the file is `postgresql-42.1.1.jar`
