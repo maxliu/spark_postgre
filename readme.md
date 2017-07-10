@@ -2,10 +2,11 @@
 
 # Preparation to use postgre in spark.
 
-1) copy driver jar file to lib/. Otherwise the workers won't able to use this driver. In this case, the file is 
+## 1) copy driver jar file to lib/. Otherwise the workers won't able to use this driver. In this case, the file is 
+   
    postgresql-42.1.1.jar
 
-2) add the following to scala code.
+## 2) add the following to scala code.
 	
   val driver = "org.postgresql.Driver"
   Class.forName(driver)
@@ -28,27 +29,27 @@ create table employee (
 
 ## The data
 
-+---+--------------------+------+--------------------+
-| id|                name|salary|          department|
-+---+--------------------+------+--------------------+
-|  1|Joe              ...| 70000|IT               ...|
-|  2|Henry            ...| 80000|Sales            ...|
-|  3|Sam              ...| 60000|Sales            ...|
-|  4|Max              ...| 90000|IT               ...|
-|  5|Janet            ...| 69000|IT               ...|
-|  6|Randy            ...| 85000|IT               ...|
-+---+--------------------+------+--------------------+
+	+---+--------------------+------+--------------------+
+	| id|                name|salary|          department|
+	+---+--------------------+------+--------------------+
+	|  1|Joe              ...| 70000|IT               ...|
+	|  2|Henry            ...| 80000|Sales            ...|
+	|  3|Sam              ...| 60000|Sales            ...|
+	|  4|Max              ...| 90000|IT               ...|
+	|  5|Janet            ...| 69000|IT               ...|
+	|  6|Randy            ...| 85000|IT               ...|
+	+---+--------------------+------+--------------------+
 
 ## Desired result.
-+--------------------+--------------------+------+
-|          department|                name|salary|
-+--------------------+--------------------+------+
-|IT               ...|Max              ...| 90000|
-|IT               ...|Randy            ...| 85000|
-|IT               ...|Joe              ...| 70000|
-|Sales            ...|Henry            ...| 80000|
-|Sales            ...|Sam              ...| 60000|
-+--------------------+--------------------+------+
+	+--------------------+--------------------+------+
+	|          department|                name|salary|
+	+--------------------+--------------------+------+
+	|IT               ...|Max              ...| 90000|
+	|IT               ...|Randy            ...| 85000|
+	|IT               ...|Joe              ...| 70000|
+	|Sales            ...|Henry            ...| 80000|
+	|Sales            ...|Sam              ...| 60000|
+	+--------------------+--------------------+------+
 
 # Query by Spark.
 
