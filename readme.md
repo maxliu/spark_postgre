@@ -96,7 +96,7 @@ create table employee (
 
     spark.read.jdbc(jdbc_url,query_str , connectionProperties)
 
-## `[please note that the query above (query_str) is not going work in spark sql in Spark 2.1.1 becaue it doesn't allow subqueries to acces out layer varibles.]`
+## [please note that the query above (query_str) is not going work in spark sql in Spark 2.1.1 becaue it doesn't allow subqueries to acces out layer varibles.]
 
 
 	
