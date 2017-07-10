@@ -2,11 +2,10 @@
 
 # Preparation to use postgre in spark.
 
-## 1) copy driver jar file to lib/. Otherwise the workers won't able to use this driver. In this case, the file is 
-   
-   postgresql-42.1.1.jar
+### 1) copy driver jar file to the folder of "lib". Otherwise the workers won't able to use this driver. 
+In this case, the file is `postgresql-42.1.1.jar`
 
-## 2) add the following to scala code.
+### 2) add the following to scala code.
 	
   val driver = "org.postgresql.Driver"
   Class.forName(driver)
