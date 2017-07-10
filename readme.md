@@ -1,11 +1,11 @@
 # Query Postgre from Spark (2.1.1)
 
-The popurse of this blog ( including source code) is to show a reliable way to connect to PostgreSQL server from Spark 2.1.1.
+The popurse of this blog (Including source code) is to demonstrate a reliable way to connect to PostgreSQL server from Spark 2.1.1.
 
 ## Preparation to use Postgre in Spark.
 
-### 1) Copy driver jar file to the folder of "lib". Otherwise the workers won't able to use this driver. 
-	In this case, the file is `postgresql-42.1.1.jar`
+### 1) Copy the driver jar file to the folder of "lib" to enable the workers to use the driver. 
+	In this case, the file is "postgresql-42.1.1.jar"
 	wget https://jdbc.postgresql.org/download/postgresql-42.1.1.jar
 
 ### 2) Add the following to scala code.
@@ -15,10 +15,10 @@ The popurse of this blog ( including source code) is to show a reliable way to c
   connectionProperties.put("driver", driver)
 
 ## Data for testing. 
-This is a "popular" SQL question:) given a table of employee with their salaries and departments, find the highest three
-slaralies in each department.
+The following is a "popular" SQL question:) 
+Given a table of employee with their salaries and departments, find the highest three slaralies in each department.
 
-The employee table in PostgreSQL database.
+The employee table in PostgreSQL database:
 
 ### The schema
 
@@ -53,7 +53,7 @@ create table employee (
 	|Sales            ...|Sam              ...| 60000|
 	+--------------------+--------------------+------+
 
-## Query by Spark.
+## Query data by Spark.
 
 #### 1) Read table to a dataframe.
 
@@ -63,7 +63,7 @@ create table employee (
 
     employees_table.createGlobalTempView("employee")
 
-#### 3) Run query useing window function.
+#### 3) Run query using window function.
 
     spark.sql("""
         select department, name, salary
@@ -93,11 +93,11 @@ create table employee (
         order by e.department, e.salary desc) as e_q
         """
 
-#### 2) Send qury to postgre server and return a spark dataframe.
+#### 2) Send query to Postgre server and return a spark dataframe.
 
     spark.read.jdbc(jdbc_url,query_str , connectionProperties)
 
-## _**`please note that the query above (query_str) is not going work in spark sql in Spark 2.1.1 becaue it doesn't allow subqueries to acces out layer varibles.`**_
+## _**"please note that the query above (query_str) will not work in spark sql in Spark 2.1.1 because it does not allow subqueries to acces out-layer varibles."**_
 
 
 	
